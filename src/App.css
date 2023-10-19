@@ -80,3 +80,9 @@
 .custom-status p {
   margin: 0; /* Add this to remove margin from <p> elements */
 }
+
+.winning-square {
+  /* Add the desired styles for winning squares */
+  background-color: #ff0; /* Yellow background for winning squares */
+  /* Add any other styles you want */
+}

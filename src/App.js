@@ -1,15 +1,19 @@
 import React, { useState, useEffect } from 'react'
 import './App.css'
-import logo from './logo.jpg' // Assuming the logo is in the same directory as your components
+import logo from './logo.jpg'
 
-function Square({ value, onSquareClick }) {
+// Square component for individual and winning squares
+function Square({ value, onSquareClick, isWinningSquare }) {
+  const classNames = `custom-square ${isWinningSquare ? 'winning-square' : ''}`
+
   return (
-    <button className="custom-square" onClick={onSquareClick}>
+    <button className={classNames} onClick={onSquareClick}>
       {value}
     </button>
   )
 }
 
+// Board component for the game board
 function Board({
   playerMove,
   setPlayerMove,
@@ -18,11 +22,30 @@ function Board({
   isGameOver,
   winningSquares,
   onSquareClick,
-  startNewGame // Pass the startNewGame function as a prop
+  startNewGame
 }) {
   const renderSquare = (i) => (
-    <Square value={squares[i]} onSquareClick={() => onSquareClick(i)} />
+    <Square
+      value={squares[i]}
+      onSquareClick={() => onSquareClick(i)}
+      isWinningSquare={winningSquares.includes(i)} // Check if the square is a winning square
+    />
   )
+
+  // Create the board rows and squares dynamically using two loops
+  const boardRows = []
+  for (let row = 0; row < 3; row++) {
+    const squaresInRow = []
+    for (let col = 0; col < 3; col++) {
+      const squareIndex = row * 3 + col
+      squaresInRow.push(<span key={col}>{renderSquare(squareIndex)}</span>)
+    }
+    boardRows.push(
+      <div key={row} className="board-row">
+        {squaresInRow}
+      </div>
+    )
+  }
 
   return (
     <>
@@ -30,19 +53,7 @@ function Board({
       <div className="custom-status">
         {isGameOver ? 'Game Over' : `Next player: ${playerMove ? 'X' : 'O'}`}
       </div>
-      <div className="custom-board-row">
-        {Array(3)
-          .fill(null)
-          .map((_, row) => (
-            <div key={row} className="board-row">
-              {Array(3)
-                .fill(null)
-                .map((_, col) => (
-                  <span key={col}>{renderSquare(row * 3 + col)}</span>
-                ))}
-            </div>
-          ))}
-      </div>
+      <div className="custom-board-row">{boardRows}</div>
       <div className="custom-status">
         {isGameOver && (
           <>
@@ -66,6 +77,7 @@ function Board({
   )
 }
 
+// Game component to manage the game logic
 function Game() {
   const [playerMove, setPlayerMove] = useState(true)
   const [history, setHistory] = useState([Array(9).fill(null)])
@@ -74,20 +86,51 @@ function Game() {
   const currentSquares = history[history.length - 1]
 
   useEffect(() => {
+    // Calculate the winner or check for a draw
     const winner = calculateWinner(currentSquares)
     if (winner) {
-      setWinningSquares(winner)
+      setWinningSquares(getWinningSquares(currentSquares, winner))
       setIsGameOver(true)
     } else if (history.length === 10) {
       setIsGameOver(true)
     }
   }, [currentSquares, history])
 
+  // Function to get the array of winning square indices
+  function getWinningSquares(squares, winner) {
+    const winningSquares = []
+    const lines = [
+      [0, 1, 2],
+      [3, 4, 5],
+      [6, 7, 8],
+      [0, 3, 6],
+      [1, 4, 7],
+      [2, 5, 8],
+      [0, 4, 8],
+      [2, 4, 6]
+    ]
+
+    for (let i = 0; i < lines.length; i++) {
+      const [a, b, c] = lines[i]
+      if (
+        squares[a] === winner &&
+        squares[b] === winner &&
+        squares[c] === winner
+      ) {
+        winningSquares.push(a, b, c)
+        break // Stop checking after finding the winning combination
+      }
+    }
+    return winningSquares
+  }
+
+  // Function to handle a player's move
   function handlePlay(nextSquares) {
     setHistory([...history, nextSquares])
     setPlayerMove(!playerMove)
   }
 
+  // Function to start a new game
   function startNewGame() {
     setHistory([Array(9).fill(null)])
     setPlayerMove(true)
@@ -95,6 +138,7 @@ function Game() {
     setWinningSquares([])
   }
 
+  // Function to handle a square click
   const onSquareClick = (i) => {
     if (!isGameOver && !currentSquares[i]) {
       handlePlay(
@@ -116,16 +160,14 @@ function Game() {
           isGameOver={isGameOver}
           winningSquares={winningSquares}
           onSquareClick={onSquareClick}
-          startNewGame={startNewGame} // Pass startNewGame as a prop
+          startNewGame={startNewGame}
         />
-      </div>
-      <div className="custom-game-info">
-        <ol>{/*TODO*/}</ol>
       </div>
     </div>
   )
 }
 
+// Function to calculate the winner
 function calculateWinner(squares) {
   const lines = [
     [0, 1, 2],
