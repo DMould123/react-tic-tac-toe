@@ -1,3 +1,18 @@
+body {
+  background-color: #f9f9f9;
+  color: #333;
+  font-size: 24px;
+}
+
+.custom-game,
+.setup-container,
+.custom-game-board {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
 .custom-square {
   width: 100px;
   height: 100px;
@@ -85,4 +100,12 @@
   /* Add the desired styles for winning squares */
   background-color: #ff0; /* Yellow background for winning squares */
   /* Add any other styles you want */
+}
+
+.setup-container {
+  background-color: #fff; /* Set the background color to match custom-game-board */
+  border-radius: 10px; /* Apply border radius */
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Apply box shadow */
+  padding: 20px;
+  margin-bottom: 20px;
 }
