@@ -1,7 +1,6 @@
 import React from 'react';
 import Square from './Spuare';
 
-
 function Board({
   playerMove,
   setPlayerMove,

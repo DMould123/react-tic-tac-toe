@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import Board from './Board';
-import logo from '../logo.jpg'
+import logo from '../img/logo.jpg'
 
 
-function Game() {
+function GameSetup() {
   const [playerMove, setPlayerMove] = useState(true)
   const [history, setHistory] = useState([Array(9).fill(null)])
   const [isGameOver, setIsGameOver] = useState(false)
@@ -18,20 +18,21 @@ function Game() {
   const currentSquares = history[history.length - 1]
 
   useEffect(() => {
-    const winner = calculateWinner(currentSquares)
+    const winner = calculateWinner(currentSquares);
     if (winner) {
-      setWinningSquares(getWinningSquares(currentSquares, winner))
+      setWinningSquares(getWinningSquares(currentSquares, winner));
       setScore((prevScore) => ({
         ...prevScore,
         [winner]: prevScore[winner] + 1
-      }))
-      setIsGameOver(true)
-      setGamesPlayed(gamesPlayed + 1)
+      }));
+      setIsGameOver(true);
     } else if (history.length === 10) {
-      setIsGameOver(true)
-      setGamesPlayed(gamesPlayed + 1)
+      setIsGameOver(true);
     }
-  }, [currentSquares, history,])
+
+    setGamesPlayed((prevGamesPlayed) => prevGamesPlayed + 1);
+  }, [currentSquares, history]);
+
 
   function getWinningSquares(squares, winner) {
     const winningSquares = []
@@ -68,45 +69,46 @@ function Game() {
   function startNewGame() {
     if (setupMode) {
       if (playerNames.X && playerNames.O && bestOf >= 1) {
-        setSetupMode(false)
-        setGamesPlayed(0)
-        setScore({ X: 0, O: 0 })
-        setHistory([Array(9).fill(null)])
-        setIsGameOver(false)
-        setWinningSquares([])
+        setSetupMode(false);
+        setGamesPlayed(0);
+        setScore({ X: 0, O: 0 });
+        setHistory([Array(9).fill(null)]);
+        setIsGameOver(false);
+        setWinningSquares([]);
       } else {
-        alert('Please fill in player names and select a valid "best of" value.')
+        alert('Please fill in player names and select a valid "best of" value.');
       }
     } else {
-      const newGame = currentGame + 1
-      setCurrentGame(newGame)
-      if (newGame <= bestOf * 2 - 1) {
-        setIsGameOver(false)
-        setWinningSquares([])
-        setHistory([Array(9).fill(null)])
-        setPlayerMove(newGame % 2 === 0)
+      const newGame = currentGame + 1;
+      setCurrentGame(newGame);
+      if (score.X < Math.ceil(bestOf / 2) && score.O < Math.ceil(bestOf / 2)) {
+        setIsGameOver(false);
+        setWinningSquares([]);
+        setHistory([Array(9).fill(null)]);
+        setPlayerMove(newGame % 2 === 0);
       } else {
-        let seriesResult = ''
-        let seriesScore = `${score.X}-${score.O}`
+        let seriesResult = '';
+        let seriesScore = `${score.X}-${score.O}`;
 
         if (score.X > score.O) {
-          seriesResult = `${playerNames.X} won the series with a score of ${seriesScore}`
+          seriesResult = `${playerNames.X} won the series with a score of ${seriesScore}`;
         } else if (score.O > score.X) {
-          seriesResult = `${playerNames.O} won the series with a score of ${seriesScore}`
+          seriesResult = `${playerNames.O} won the series with a score of ${seriesScore}`;
         } else {
-          seriesResult = `The series ended in a draw with a score of ${seriesScore}`
+          seriesResult = `The series ended in a draw with a score of ${seriesScore}`;
         }
-        alert(`GAME OVER! ${seriesResult}`)
+        alert(`GAME OVER! ${seriesResult}`);
 
         // Reset for the next series
-        setCurrentGame(1)
-        setScore({ X: 0, O: 0 })
-        setSetupMode(true)
-        setGamesPlayed(0)
-        setPlayerNames({ X: '', O: '' }) // Reset player names
+        setCurrentGame(1);
+        setScore({ X: 0, O: 0 });
+        setSetupMode(true);
+        setGamesPlayed(0);
+        setPlayerNames({ X: '', O: '' }); // Reset player names
       }
     }
   }
+
 
   const onSquareClick = (i) => {
     if (!setupMode && !isGameOver && !currentSquares[i]) {
@@ -209,4 +211,4 @@ function calculateWinner(squares) {
   return null
 }
 
-export default Game
+export default GameSetup

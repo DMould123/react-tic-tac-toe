@@ -41,9 +41,9 @@ body {
 .custom-board-row {
   display: flex;
   flex-direction: row;
+  justify-content: center;
 }
 
-/* Optional: You can customize the colors for 'X' and 'O' */
 .custom-square.X {
   color: #2ecc71; /* Green for 'X' */
 }
@@ -55,6 +55,23 @@ body {
 .custom-status {
   font-size: 24px;
   margin-bottom: 20px;
+  text-align: center;
+}
+.custom-status button {
+  background-color: #3498db;
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 10px; /* Add margin to the top */
+}
+
+.custom-status button:hover,
+.custom-status button:active,
+.custom-status button:focus {
+  background-color: #2980b9;
 }
 
 .custom-game {
@@ -92,20 +109,52 @@ body {
   margin: 5px 0;
 }
 
-.custom-status p {
-  margin: 0; /* Add this to remove margin from <p> elements */
-}
-
 .winning-square {
-  /* Add the desired styles for winning squares */
-  background-color: #ff0; /* Yellow background for winning squares */
-  /* Add any other styles you want */
+  background-color: #ff0; /* Yellow for winning squares */
 }
 
 .setup-container {
-  background-color: #fff; /* Set the background color to match custom-game-board */
-  border-radius: 10px; /* Apply border radius */
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Apply box shadow */
+  background-color: #fff;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   padding: 20px;
   margin-bottom: 20px;
+}
+
+.setup-container img {
+  display: block;
+  margin: 0 auto;
+}
+
+.setup-container h2 {
+  margin-bottom: 20px;
+}
+
+.setup-container label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 18px; /* Adjust the font size */
+}
+
+.setup-container input,
+.setup-container select {
+  width: calc(100% - 20px); /* Adjust the width to leave some margin */
+  padding: 10px;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+}
+
+.setup-container button {
+  background-color: #3498db;
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 10px; /* Add margin to the top */
+}
+
+.setup-container button:hover,
+.setup-container button:active {
+  background-color: #2980b9;
 }

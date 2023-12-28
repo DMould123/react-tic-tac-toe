@@ -1,11 +1,11 @@
 import React from 'react'
 import './App.css'
-import Game from './components/Game'
+import GameSetup from './components/GameSetup'
 
 function App() {
   return (
     <div className="App">
-      <Game />
+      <GameSetup />
     </div>
   )
 }
