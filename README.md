@@ -14,13 +14,13 @@ DM Weather App aims to:
 - 🌐 Showcase React.js skills and best practices.
 - 🚀 Provide a platform for continuous improvement and feature enhancements.
 
-## Tech Stack
+## Tech Stack 💻
 
 - React
 - React Hooks
 - React Toastify
 
-## Installation & Steup
+## Installation & Setup 🔧
 
 1. Clone the repository to your local machine:
 
