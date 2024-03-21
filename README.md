@@ -1,70 +1,71 @@
-# Getting Started with Create React App
+# Tic-Tac-Toe Game 🎮❌⭕
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Description 🌍
 
-## Available Scripts
+The Tic-Tac-Toe game is a React-based web application designed to provide a classic gaming experience for players of all ages. Users can enjoy the traditional tic-tac-toe gameplay, taking turns placing X's and O's on a 3x3 grid, aiming to be the first to get three of their symbols in a row. The primary goal of this project is to showcase React.js proficiency and deliver a fun and interactive gaming experience.
 
-In the project directory, you can run:
+## Objectives 🎯
 
-### `npm start`
+DM Weather App aims to:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- 🎮 Provide an engaging and nostalgic tic-tac-toe gaming experience.
+- 🎨 Create a visually appealing and intuitive user interface.
+- 🔄 Implement game logic for placing symbols and determining the winner.
+- 🌐 Showcase React.js skills and best practices.
+- 🚀 Provide a platform for continuous improvement and feature enhancements.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Tech Stack
 
-### `npm test`
+- React
+- React Hooks
+- React Toastify
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Installation & Steup
 
-### `npm run build`
+1. Clone the repository to your local machine:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+git clone https://github.com/your-username/tic-tac-toe-game.git
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+2. Navigate to the project directory:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+cd tic-tac-toe-game
+```
 
-### `npm run eject`
+3. Install the required dependencies:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```bash
+npm install
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+4. Create a `.env` file in the root directory and add your API key for the OpenWeatherMap API:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```VITE_APIKEY=your_api_key_here
+VITE_APP_API_ENDPOINT=https://api.openweathermap.org/data/2.5/
+```
+5. Run the app
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```bash
+npm start
+```
 
-## Learn More
+6. Open your web browser and visit http://localhost:3000 to play the Tic-Tac-Toe game.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Note: You will need an active internet connection to load the necessary CSS and JavaScript files.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Features ✨
 
-### Code Splitting
+- ❌⭕ Take turns placing X's and O's on a 3x3 grid.
+- 🔄 Restart the game at any time for a fresh start.
+- 🎨 Responsive design for optimal gameplay on various devices.
+- 🏆 Determine the winner or declare a draw based on the game's outcome.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## License 📝
 
-### Analyzing the Bundle Size
+This project is licensed under the MIT License - see the LICENSE.md file for details.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Author 📚
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- David Mould
